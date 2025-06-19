@@ -1,0 +1,1057 @@
+{
+	"info": {
+		"_postman_id": "22b5512f-b566-4cbc-a5f3-16985e2b023d",
+		"name": "IniciativaEventoTest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37639628"
+	},
+	"item": [
+		{
+			"name": "Post evento1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.globals.set(\"evento_id1\", data.id);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"titulo\": \"evento1\",\r\n    \"imagenPublicitaria\": \"https://imagen.com\",\r\n    \"cupos\": 10,\r\n    \"descripcion\": \"evento descripcion\",\r\n    \"fecha\": \"2024-02-25\",\r\n    \"duracion\": 10,\r\n    \"lugar\": \"xd\",\r\n    \"organizador\": \"adrian\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/eventos",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"eventos"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Post evento",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"titulo\": \"evento1\",\r\n    \"imagenPublicitaria\": \"https://imagen.com\",\r\n    \"cupos\": 10,\r\n    \"descripcion\": \"evento descripcion\",\r\n    \"fecha\": \"2024-02-25\",\r\n    \"duracion\": 10,\r\n    \"lugar\": \"xd\",\r\n    \"organizador\": \"adrian\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/eventos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"eventos"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Post evento2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.globals.set(\"evento_id2\", data.id);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"titulo\": \"evento2\",\r\n    \"imagenPublicitaria\": \"https://imagen.com\",\r\n    \"cupos\": 10,\r\n    \"descripcion\": \"evento descripcion\",\r\n    \"fecha\": \"2024-02-25\",\r\n    \"duracion\": 10,\r\n    \"lugar\": \"xd\",\r\n    \"organizador\": \"adrian\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/eventos",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"eventos"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Post evento",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"titulo\": \"evento1\",\r\n    \"imagenPublicitaria\": \"https://imagen.com\",\r\n    \"cupos\": 10,\r\n    \"descripcion\": \"evento descripcion\",\r\n    \"fecha\": \"2024-02-25\",\r\n    \"duracion\": 10,\r\n    \"lugar\": \"xd\",\r\n    \"organizador\": \"adrian\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/eventos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"eventos"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Crear una nueva iniciativa",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.globals.set(\"iniciativa_id\", data.id);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"iniciativa1\",\r\n    \"logo\": \"https://www.image.com\",\r\n    \"descripcion\": \"me gusta\",\r\n    \"fechaCreacion\": \"2024-09-29\",\r\n    \"estado\": true,\r\n    \"administrador\": \"Pepito Perez\"\r\n    // \"miembros\": [ { \"id\": {{miembro_id}} } ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/iniciativas",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"iniciativas"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Crear una nueva iniciativas",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"nombre\": \"iniciativa1\",\r\n    \"logo\": \"https://www.image.com/1\",\r\n    \"descripcion\": \"me gusta\",\r\n    \"fechaCreacion\": \"25-02-2024\",\r\n    \"estado\": \"true\",\r\n    \"administrador\": \"Pepito Perez\",\r\n    \"miembros\": [{ \"id\": {{miembro_id}} }]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/iniciativas",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"iniciativas"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Post evento in invalid iniciativa",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.apierror.message).to.eql(\"Iniciativa with id 0 not valid\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/iniciativas/0/eventos/{{evento_id1}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"iniciativas",
+						"0",
+						"eventos",
+						"{{evento_id1}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Post evento in invalid iniciativa",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"apierror\": {\r\n        \"status\": \"NOT_FOUND\",\r\n        \"timestamp\": \"29-09-2024 07:47:40\",\r\n        \"message\": \"Iniciativa with id 0 not valid\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/iniciativas/0/eventos/{{evento_id1}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"iniciativas",
+								"0",
+								"eventos",
+								"{{evento_id1}}"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Post invalid evento in iniciativa",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.apierror.message).to.eql(\"Evento with id 0 not valid\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/iniciativas/{{iniciativa_id}}/eventos/0",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"iniciativas",
+						"{{iniciativa_id}}",
+						"eventos",
+						"0"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Post invalid evento in iniciativa",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"apierror\": {\r\n        \"status\": \"NOT_FOUND\",\r\n        \"timestamp\": \"29-09-2024 07:48:44\",\r\n        \"message\": \"Evento with id 0 not valid\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/iniciativas/{{iniciativa_id}}/eventos/0",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"iniciativas",
+								"{{iniciativa_id}}",
+								"eventos",
+								"0"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Post evento in iniciativa",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/iniciativas/{{iniciativa_id}}/eventos/{{evento_id1}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"iniciativas",
+						"{{iniciativa_id}}",
+						"eventos",
+						"{{evento_id1}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Post evento in iniciativa",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"titulo\": \"evento1\",\r\n    \"imagenPublicitaria\": \"https://imagen.com\",\r\n    \"cupos\": 10,\r\n    \"descripcion\": \"evento descripcion\",\r\n    \"fecha\": \"2024-02-24\",\r\n    \"duracion\": 10,\r\n    \"lugar\": \"xd\",\r\n    \"organizador\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/iniciativas/{{iniciativa_id}}/eventos/{{evento_id1}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"iniciativas",
+								"{{iniciativa_id}}",
+								"eventos",
+								"{{evento_id1}}"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Get evento from invalid iniciativa",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.apierror.message).to.eql(\"Iniciativa with id 0 not valid\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/iniciativas/0/eventos/{{evento_id1}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"iniciativas",
+						"0",
+						"eventos",
+						"{{evento_id1}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get evento from invalid iniciativa",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/iniciativas/0/eventos/{{evento_id1}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"iniciativas",
+								"0",
+								"eventos",
+								"{{evento_id1}}"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Get invalid evento from iniciativa",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.apierror.message).to.eql(\"Evento with id 0 not valid\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/iniciativas/{{iniciativa_id}}/eventos/0",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"iniciativas",
+						"{{iniciativa_id}}",
+						"eventos",
+						"0"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get invalid evento from iniciativa",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/iniciativas/{{iniciativa_id}}/eventos/0",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"iniciativas",
+								"{{iniciativa_id}}",
+								"eventos",
+								"0"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Get evento from iniciativa",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/iniciativas/{{iniciativa_id}}/eventos/{{evento_id1}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"iniciativas",
+						"{{iniciativa_id}}",
+						"eventos",
+						"{{evento_id1}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get evento from iniciativa",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/iniciaitvas/{{iniciativa_id}}/eventos/{{evento_id1}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"iniciaitvas",
+								"{{iniciativa_id}}",
+								"eventos",
+								"{{evento_id1}}"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Put eventos in iniciativa",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"id\": {{evento_id1}},\r\n        \"titulo\": \"evento1\",\r\n        \"imagenPublicitaria\": \"https://imagen.com\",\r\n        \"cupos\": 10,\r\n        \"descripcion\": \"evento descripcion\",\r\n        \"fecha\": \"2024-02-25\",\r\n        \"duracion\": 10,\r\n        \"lugar\": \"xd\",\r\n        \"organizador\": \"adrian\"\r\n    },\r\n    {\r\n        \"id\": {{evento_id2}},\r\n        \"titulo\": \"evento2\",\r\n        \"imagenPublicitaria\": \"https://imagen.com\",\r\n        \"cupos\": 10,\r\n        \"descripcion\": \"evento descripcion\",\r\n        \"fecha\": \"2024-02-25\",\r\n        \"duracion\": 10,\r\n        \"lugar\": \"xd\",\r\n        \"organizador\": \"adrian\"\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/iniciativas/{{iniciativa_id}}/eventos",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"iniciativas",
+						"{{iniciativa_id}}",
+						"eventos"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Put eventos in iniciativa",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"id\": 1,\r\n        \"titulo\": \"evento1\",\r\n        \"imagenPublicitaria\": \"https://imagen.com\",\r\n        \"cupos\": 10,\r\n        \"descripcion\": \"evento descripcion\",\r\n        \"fecha\": \"2024-02-25\",\r\n        \"duracion\": 10,\r\n        \"lugar\": \"xd\",\r\n        \"organizador\": \"adrian\"\r\n    },\r\n    {\r\n        \"id\": 2,\r\n        \"titulo\": \"evento2\",\r\n        \"imagenPublicitaria\": \"https://imagen.com\",\r\n        \"cupos\": 10,\r\n        \"descripcion\": \"evento descripcion\",\r\n        \"fecha\": \"2024-02-25\",\r\n        \"duracion\": 10,\r\n        \"lugar\": \"xd\",\r\n        \"organizador\": \"adrian\"\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/iniciativas/{{iniciativa_id}}/eventos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"iniciativas",
+								"{{iniciativa_id}}",
+								"eventos"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Get eventos from invalid iniciativa",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.apierror.message).to.eql(\"Iniciativa with id 0 not valid\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/iniciativas/0/eventos",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"iniciativas",
+						"0",
+						"eventos"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get eventos from invalid iniciativa",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/iniciativas/0/eventos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"iniciativas",
+								"0",
+								"eventos"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Get eventos from iniciativa",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/iniciativas/{{iniciativa_id}}/eventos",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"iniciativas",
+						"{{iniciativa_id}}",
+						"eventos"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get eventos from iniciativa",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/iniciaitvas/{{iniciativa_id}}/eventos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"iniciaitvas",
+								"{{iniciativa_id}}",
+								"eventos"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Delete evento from invalid iniciativa",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.apierror.message).to.eql(\"Iniciativa with id 0 not valid\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/iniciativas/0/eventos/{{evento_id1}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"iniciativas",
+						"0",
+						"eventos",
+						"{{evento_id1}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Delete evento from invalid iniciativa",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"apierror\": {\r\n        \"status\": \"NOT_FOUND\",\r\n        \"timestamp\": \"29-09-2024 06:57:22\",\r\n        \"message\": \"Iniciativa with id 0 not valid\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/iniciativas/0/eventos/{{evento_id1}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"iniciativas",
+								"0",
+								"eventos",
+								"{{evento_id1}}"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Delete invalid evento from iniciativa",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.apierror.message).to.eql(\"Evento with id 0 not valid\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/iniciativas/{{iniciativa_id}}/eventos/0",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"iniciativas",
+						"{{iniciativa_id}}",
+						"eventos",
+						"0"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Delete invalid evento from iniciativa",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"apierror\": {\r\n        \"status\": \"NOT_FOUND\",\r\n        \"timestamp\": \"29-09-2024 06:56:58\",\r\n        \"message\": \"Evento with id 0 not valid\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/iniciativas/{{iniciativa_id}}/eventos/0",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"iniciativas",
+								"{{iniciativa_id}}",
+								"eventos",
+								"0"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Delete evento from iniciativa",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"   pm.response.to.have.status(204);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/iniciativas/{{iniciativa_id}}/eventos/{{evento_id1}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"iniciativas",
+						"{{iniciativa_id}}",
+						"eventos",
+						"{{evento_id1}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

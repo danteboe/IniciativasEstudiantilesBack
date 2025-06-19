@@ -1,0 +1,789 @@
+{
+	"info": {
+		"_postman_id": "b360d7d1-1a4d-4779-9aeb-70ab87a06124",
+		"name": "IniciativaTest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37639628"
+	},
+	"item": [
+		{
+			"name": "Crear un miembro",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.globals.set(\"miembro_id\", data.id);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fechaInscripcion\": \"1927-03-03T00:00:00-05:00\",\r\n    \"nombre\": \"Gabo Márquez\",\r\n    \"foto\": \"https://commons.wikimedia.org/wiki/File:Gabriel_Garcia_Marquez.jpg\",\r\n    \"correoElectronico\": \"gabito@uniandes.edu.co\",\r\n    \"tipo\": \"Miembro\",\r\n    \"codigo\": 201284690,\r\n    \"estado\": \"EGRESADO\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/miembros",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"miembros"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Crear un miembro",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":1,\r\n    \"fechaInscripcion\": \"1927-03-03T00:00:00-05:00\",\r\n    \"nombre\": \"Gabo Márquez\",\r\n    \"foto\": \"https://commons.wikimedia.org/wiki/File:Gabriel_Garcia_Marquez.jpg\",\r\n    \"correoElectronico\": \"gabito@uniandes.edu.co\",\r\n    \"tipo\": \"Miembro\",\r\n    \"codigo\": 201284690,\r\n    \"estado\": \"EGRESADO\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/miembros",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"miembros"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Crear iniciativa invalid fecha",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 412\", function () {\r",
+							"   pm.response.to.have.status(412);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.apierror.message).to.eql(\"Fecha not in range.\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"iniciativa1\",\r\n    \"logo\": \"https://www.image.com\",\r\n    \"descripcion\": \"me gusta\",\r\n    \"fechaCreacion\": \"2030-09-29\",\r\n    \"estado\": true,\r\n    \"administrador\": \"Pepito Perez\",\r\n    \"miembros\": [ { \"id\": {{miembro_id}} } ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/iniciativas",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"iniciativas"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Crear iniciativa invalid fecha",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"apierror\": {\r\n        \"status\": \"PRECONDITION_FAILED\",\r\n        \"timestamp\": \"29-09-2024 07:29:49\",\r\n        \"message\": \"Fecha not in range.\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/iniciativas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"iniciativas"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Crear una nueva iniciativa",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.globals.set(\"iniciativa_id\", data.id);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"iniciativa1\",\r\n    \"logo\": \"https://www.image.com\",\r\n    \"descripcion\": \"me gusta\",\r\n    \"fechaCreacion\": \"2024-09-29\",\r\n    \"estado\": true,\r\n    \"administrador\": \"Pepito Perez\",\r\n    \"miembros\": [ { \"id\": {{miembro_id}} } ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/iniciativas",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"iniciativas"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Crear una nueva iniciativas",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"nombre\": \"iniciativa1\",\r\n    \"logo\": \"https://www.image.com/1\",\r\n    \"descripcion\": \"me gusta\",\r\n    \"fechaCreacion\": \"25-02-2024\",\r\n    \"estado\": \"true\",\r\n    \"administrador\": \"Pepito Perez\",\r\n    \"miembros\": [{ \"id\": {{miembro_id}} }]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/iniciativas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"iniciativas"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Obtener iniciativa que no existe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.apierror.message).to.eql(\"Iniciativa with ID 0 not found\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/iniciativas/0",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"iniciativas",
+						"0"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener iniciativa que no existe",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/iniciativas/0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"iniciativas",
+								"0"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Obtener todas las iniciativas",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/iniciaitvas",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"iniciaitvas"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener todas las iniciativas",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/iniciativas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"iniciativas"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Obtener una iniciativa",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/iniciativas/{{iniciativa_id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"iniciativas",
+						"{{iniciativa_id}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener una iniciativa",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/iniciativas/{{iniciativa_id}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"iniciativas",
+								"{{iniciativa_id}}"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Editar una iniciativa que no existe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.apierror.message).to.eql(\"Iniciativa with ID 0 not found\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"iniciativa1\",\r\n    \"logo\": \"https://www.image.com\",\r\n    \"descripcion\": \"me gusta\",\r\n    \"fechaCreacion\": \"2024-09-29\",\r\n    \"estado\": true,\r\n    \"administrador\": \"Pepito Perez\",\r\n    \"miembros\": [ { \"id\": {{miembro_id}} } ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/iniciativas/0",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"iniciativas",
+						"0"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Editar una iniciativa que no existe",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"apierror\": {\r\n        \"status\": \"NOT_FOUND\",\r\n        \"timestamp\": \"21-02-2023 10:04:10\",\r\n        \"message\": \"The comentario with the given id was not found\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/iniciativa/0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"iniciativa",
+								"0"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Editar una iniciativa",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"iniciativa1\",\r\n    \"logo\": \"https://www.image.com\",\r\n    \"descripcion\": \"me gusta\",\r\n    \"fechaCreacion\": \"2024-09-29\",\r\n    \"estado\": true,\r\n    \"administrador\": \"Pepito Perez\",\r\n    \"miembros\": [ { \"id\": {{miembro_id}} } ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/iniciativas/{{iniciativa_id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"iniciativas",
+						"{{iniciativa_id}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Editar una iniciativa",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"nombre\": \"iniciativa1\",\r\n    \"logo\": \"https://www.image.com/1\",\r\n    \"descripcion\": \"me gusta\",\r\n    \"fechaCreacion\": \"2019-02-25\",\r\n    \"estado\": \"true\",\r\n    \"administrador\": \"Pepito Perez\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/iniciativas/{{iniciativas_id}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"iniciativas",
+								"{{iniciativas_id}}"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Eliminar iniciaitva que no existe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.apierror.message).to.eql(\"Iniciativa with ID 0 not found\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/iniciativas/0",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"iniciativas",
+						"0"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Eliminar iniciativa que no existe",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"apierror\": {\r\n        \"status\": \"NOT_FOUND\",\r\n        \"timestamp\": \"21-02-2023 10:04:10\",\r\n        \"message\": \"The iniciativa with the given id was not found\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/iniciativas/0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"iniciativas",
+								"0"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Eliminar una iniciativa",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"   pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/iniciativas/{{iniciativa_id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"iniciativas",
+						"{{iniciativa_id}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Eliminar una iniciativa",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"apierror\": {\r\n        \"status\": \"NOT_FOUND\",\r\n        \"timestamp\": \"29-09-2024 07:30:09\",\r\n        \"message\": \"Iniciativa with ID 1 not found\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/iniciativas/{{iniciativa_id}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"iniciativas",
+								"{{iniciativa_id}}"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		}
+	]
+}

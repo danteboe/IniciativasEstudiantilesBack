@@ -1,0 +1,497 @@
+{
+	"info": {
+		"_postman_id": "58c57e2c-1db4-497b-a1d0-0df231d0f3c8",
+		"name": "ConcursoTest.postman_collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37897942"
+	},
+	"item": [
+		{
+			"name": "Crear Concurso",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()",
+							"pm.globals.set(\"concurso_id\", data.id);",
+							"",
+							"",
+							"pm.test(\"Status code is 201\", function () {",
+							"   pm.response.to.have.status(201);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"titulo\": \"Concurso Innovación 2024\",\n    \"imagen\": \"http://example.com/imagen.png\",\n    \"descripcion\": \"Un concurso para fomentar la innovación tecnológica en la región.\",\n    \"precio\": 500,\n    \"premio\": \"Un viaje a Silicon Valley\",\n    \"fecha\": \"2025-12-01\",\n    \"organizado\": \"Departamento de Innovación\",\n    \"ciudad\": \"Bogotá\",\n    \"Iniciativa\":[]\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/concursos",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"concursos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear Concurso fecha del pasado",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 412\", function () {",
+							"   pm.response.to.have.status(412);",
+							"});",
+							"",
+							"pm.test(\"Get expected error message\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.apierror.message).to.eql(\"The date must be in the future.\");",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"titulo\": \"Concurso Innovación 2024\",\n    \"imagen\": \"http://example.com/imagen.png\",\n    \"descripcion\": \"Un concurso para fomentar la innovación tecnológica en la región.\",\n    \"precio\": 500,\n    \"premio\": \"Un viaje a Silicon Valley\",\n    \"fecha\": \"2022-12-01\",\n    \"organizado\": \"Departamento de Innovación\",\n    \"ciudad\": \"Bogotá\",\n    \"iniciativas\": []\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/concursos",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"concursos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear Concurso Precio menos a 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 412\", function () {",
+							"   pm.response.to.have.status(412);",
+							"});",
+							"",
+							"pm.test(\"Get expected error message\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.apierror.message).to.eql(\"Integer must be greater than 0.\");",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"titulo\": \"Concurso Innovación 2024\",\n    \"imagen\": \"http://example.com/imagen.png\",\n    \"descripcion\": \"Un concurso para fomentar la innovación tecnológica en la región.\",\n    \"precio\": 0,\n    \"premio\": \"Un viaje a Silicon Valley\",\n    \"fecha\": \"2024-12-01\",\n    \"organizado\": \"Departamento de Innovación\",\n    \"ciudad\": \"Bogotá\",\n    \"iniciativas\": []\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/concursos",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"concursos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear Concurso Regla 200 caracteres",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 412\", function () {",
+							"   pm.response.to.have.status(412);",
+							"});",
+							"",
+							"pm.test(\"Get expected error message\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.apierror.message).to.eql(\"String exceeds maximum length of 200 characters.\");",
+							"});",
+							"",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"titulo\": \"Concurso Innovación 2024\",\n    \"imagen\": \"http://example.com/imagen.png\",\n    \"descripcion\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent consequat, odio ut vehicula vehicula, nulla nisl fermentum nisl, vitae efficitur ligula velit at mauris. Donec vehicula nulla libero, at consequat orci pulvinar et. Nullam congue lectus ut vestibulum tincidunt. Vestibulum sit amet efficitur mauris. Integer malesuada risus.\",\n    \"precio\": 500,\n    \"premio\": \"Un viaje a Silicon Valley\",\n    \"fecha\": \"2024-12-01\",\n    \"organizado\": \"Departamento de Innovación\",\n    \"ciudad\": \"Bogotá\",\n    \"iniciativas\": []\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/concursos",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"concursos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Concursos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\",function(){",
+							"    pm.response.to.have.status(200); })",
+							"    "
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n     \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/concursos",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"concursos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Concurso",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/concursos/{{concurso_id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"concursos",
+						"{{concurso_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener concurso que no existe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Get expected error message\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.apierror.message).to.eql(\"Concurso with ID not found\");",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/concursos/0",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"concursos",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar un concurso",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"titulo\": \"Concurso Innovación 2025\",\n    \"imagen\": \"http://example.com/imagen.png\",\n    \"descripcion\": \"Un concurso para fomentar la innovación tecnológica en la región.\",\n    \"precio\": 5000,\n    \"premio\": \"Un viaje a Silicon Valley\",\n    \"fecha\": \"2025-12-01\",\n    \"organizado\": \"Departamento de Innovación\",\n    \"ciudad\": \"Bogotá\",\n    \"iniciativas\": []\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/concursos/{{concurso_id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"concursos",
+						"{{concurso_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar un concurso que no existe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Get expected error message\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.apierror.message).to.eql(\"Concurso with ID not found\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"titulo\": \"Concurso Innovación 2025\",\n    \"imagen\": \"http://example.com/imagen.png\",\n    \"descripcion\": \"Un concurso para fomentar la innovación tecnológica en la región.\",\n    \"precio\": 5000,\n    \"premio\": \"Un viaje a Silicon Valley\",\n    \"fecha\": \"2024-12-01\",\n    \"organizado\": \"Departamento de Innovación\",\n    \"cuidad\": \"Bogotá\",\n    \"iniciativas\": []\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/concursos/0",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"concursos",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Borrar un concurso",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {",
+							"   pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/concursos/{{concurso_id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"concursos",
+						"{{concurso_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Borrar un concurso que no existe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Get expected error message\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.apierror.message).to.eql(\"Concurso with ID not found\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/concursos/0",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"concursos",
+						"0"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

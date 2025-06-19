@@ -1,0 +1,526 @@
+{
+	"info": {
+		"_postman_id": "d7c68c3e-5ab7-422a-a261-19145692afb4",
+		"name": "ConcursoIniciativaTest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37560681"
+	},
+	"item": [
+		{
+			"name": "Agregar una iniciativa a un concurso",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/eventos/{{evento_id}}/iniciativas/{{iniciativa_id_1}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"eventos",
+						"{{evento_id}}",
+						"iniciativas",
+						"{{iniciativa_id_1}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Agregar una iniciativa a un concurso",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/evento/{{evento_id}}/iniciativa/{{iniciativa_id_1}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"evento",
+								"{{evento_id}}",
+								"iniciativa",
+								"{{iniciativa_id_1}}"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"id\":1,\n    \"nombre\": \"JavaEngineer\",\n    \"logo\": \"https://example.com/logo-javaengineer.png\",\n    \"descripcion\": \"Una comunidad de desarrolladores enfocados en promover el uso de Java y sus tecnologías asociadas.\",\n    \"fechaCreacion\": \"2021-04-15\",\n    \"administrador\": \"John Doe\",\n    \"eventos\": [\n        {\n            \"id\":2,\n            \"titulo\": \"Charla de Java\",\n            \"descripcion\": \"En esta reunión se hablará sobre las diferentes opciones que nos ofrece Java para programar\",\n            \"lugar\": \"salón del ML 503\",\n            \"cupos\": 60,\n            \"imagenPublicitaria\": \"https://desarrolloweb.com/storage/tag_images/actual/8VxgAXS5vXyI9RIEcpWlC3DxAAouJXWNgpOeHxll.png\",\n            \"duracion\": 2,\n            \"fecha\": \"2023-08-20\",\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Agregar una iniciativa que no existe a un concurso",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/eventos/{{evento_id}}/iniciativas/0",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"eventos",
+						"{{evento_id}}",
+						"iniciativas",
+						"0"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Agregar una iniciativa que no existe a un concurso",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/evento/{{evento_id}}/iniciativa/0",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"evento",
+								"{{evento_id}}",
+								"iniciativa",
+								"0"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\r\n    \"apierror\": {\r\n        \"status\": \"NOT_FOUND\",\r\n        \"message\": \"The initiative with the given id was not found\"\r\n    }\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener una iniciativa de un concurso",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/eventos/{{evento_id}}/iniciativas/{{iniciativa_id_1}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"eventos",
+						"{{evento_id}}",
+						"iniciativas",
+						"{{iniciativa_id_1}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener una iniciativa de un concurso",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/evento/{{evento_id}}/iniciativa/{{iniciativa_id_1}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"evento",
+								"{{evento_id}}",
+								"iniciativa",
+								"{{iniciativa_id_1}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\r\n    \"id\":1,\r\n    \"nombre\": \"JavaEngineer\",\r\n    \"logo\": \"https://example.com/logo-javaengineer.png\",\r\n    \"descripcion\": \"Una comunidad de desarrolladores enfocados en promover el uso de Java y sus tecnologías asociadas.\",\r\n    \"fechaCreacion\": \"2021-04-15\",\r\n    \"administrador\": \"John Doe\",\r\n    \"eventos\": [\r\n        {\r\n            \"id\":2,\r\n            \"titulo\": \"Charla de Java\",\r\n            \"descripcion\": \"En esta reunión se hablará sobre las diferentes opciones que nos ofrece Java para programar\",\r\n            \"lugar\": \"salón del ML 503\",\r\n            \"cupos\": 60,\r\n            \"imagenPublicitaria\": \"https://desarrolloweb.com/storage/tag_images/actual/8VxgAXS5vXyI9RIEcpWlC3DxAAouJXWNgpOeHxll.png\",\r\n            \"duracion\": 2,\r\n            \"fecha\": \"2023-08-20\",\r\n        }\r\n    ]\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener una iniciativa que no existe de un concurso",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/eventos/{{evento_id}}/iniciativas/0",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"eventos",
+						"{{evento_id}}",
+						"iniciativas",
+						"0"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener una iniciativa que no existe de un concurso",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/evento/{{evento_id}}/iniciativa/0",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"evento",
+								"{{evento_id}}",
+								"iniciativa",
+								"0"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"apierror\": {\n        \"status\": \"NOT_FOUND\",\n        \"message\": \"The initiative with the given id was not found\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener una iniciativa que no está asociada a un concurso",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/eventoss/{{evento_id}}/iniciativas/{{iniciativa_id_2}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"eventoss",
+						"{{evento_id}}",
+						"iniciativas",
+						"{{iniciativa_id_2}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener una iniciativa que no está asociada a un concurso",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/evento/{{evento_id}}/iniciativa/{{iniciativa_id_2}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"evento",
+								"{{evento_id}}",
+								"iniciativa",
+								"{{iniciativa_id_2}}"
+							]
+						}
+					},
+					"status": "Precondition Failed",
+					"code": 412,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"apierror\": {\n        \"status\": \"PRECONDITION_FAILED\",\n        \"timestamp\": \"21-02-2023 10:19:03\",\n        \"message\": \"The initiative is not associated to the event\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener las iniciativas de un concurso",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/iniciativas/{{iniciativa_id}}/iniciativas",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"iniciativas",
+						"{{iniciativa_id}}",
+						"iniciativas"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener las iniciativas de un concurso",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/iniciativa/{{iniciativa_id}}/iniciativa",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"iniciativa",
+								"{{iniciativa_id}}",
+								"iniciativa"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"id\":1,\n    \"nombre\": \"JavaEngineer\",\n    \"logo\": \"https://example.com/logo-javaengineer.png\",\n    \"descripcion\": \"Una comunidad de desarrolladores enfocados en promover el uso de Java y sus tecnologías asociadas.\",\n    \"fechaCreacion\": \"2021-04-15\",\n    \"administrador\": \"John Doe\",\n    \"eventos\": [\n        {\n            \"id\":2,\n            \"titulo\": \"Charla de Java\",\n            \"descripcion\": \"En esta reunión se hablará sobre las diferentes opciones que nos ofrece Java para programar\",\n            \"lugar\": \"salón del ML 503\",\n            \"cupos\": 60,\n            \"imagenPublicitaria\": \"https://desarrolloweb.com/storage/tag_images/actual/8VxgAXS5vXyI9RIEcpWlC3DxAAouJXWNgpOeHxll.png\",\n            \"duracion\": 2,\n            \"fecha\": \"2023-08-20\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Asociar iniciativas a un concurso",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"id\":  {{new_id_i1}},\r\n        \"nombre\": \"JavaEngineer\",\r\n        \"logo\": \"https://example.com/logo-javaengineer.png\",\r\n        \"descripcion\": \"Una comunidad de desarrolladores enfocados en promover el uso de Java y sus tecnologías asociadas.\",\r\n        \"fechaCreacion\": \"2021-04-15\",\r\n        \"administrador\": \"John Doe\"\r\n    },\r\n    {\r\n        \"id\": {{new_id_i2}},\r\n        \"nombre\": \"PythonExperts\",\r\n        \"logo\": \"https://example.com/logo-pythonexperts.png\",\r\n        \"descripcion\": \"Un grupo de entusiastas y profesionales de Python que exploran el lenguaje y sus aplicaciones.\",\r\n        \"fechaCreacion\": \"2020-09-12\",\r\n        \"administrador\": \"Jane Smith\"\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/concursos/{{concurso_id}}/iniciativas",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"concursos",
+						"{{concurso_id}}",
+						"iniciativas"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Asociar iniciativas a un concurso",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/concurso/{{concurso_id}}/iniciativa",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"concurso",
+								"{{concurso_id}}",
+								"iniciativa"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 1,\n        \"nombre\": \"JavaEngineer\",\n        \"logo\": \"https://example.com/logo-javaengineer.png\",\n        \"descripcion\": \"Una comunidad de desarrolladores enfocados en promover el uso de Java y sus tecnologías asociadas.\",\n        \"fechaCreacion\": \"2021-04-15\",\n        \"administrador\": \"John Doe\",\n        \"eventos\": [],\n        \"concursos\": []\n    },\n    {\n        \"id\": 2,\n        \"nombre\": \"PythonExperts\",\n        \"logo\": \"https://example.com/logo-pythonexperts.png\",\n        \"descripcion\": \"Un grupo de entusiastas y profesionales de Python que exploran el lenguaje y sus aplicaciones.\",\n        \"fechaCreacion\": \"2020-09-12\",\n        \"administrador\": \"Jane Smith\",\n        \"eventos\": [],\n        \"concursos\": []\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Asociar iniciativas que no existen a un concurso",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"id\": 0,\r\n        \"nombre\": \"Iniciativa Fantasma\",\r\n        \"logo\": \"https://example.com/logo-phantom.png\",\r\n        \"descripcion\": \"Una iniciativa que no debería existir.\",\r\n        \"fechaCreacion\": \"2023-01-01\",\r\n        \"administrador\": \"Fantasma Doe\"\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/concursos/{{concurso_id}}/iniciativas",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"concursos",
+						"{{concurso_id}}",
+						"iniciativas"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Asociar iniciativas que no existen a un concurso",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/concurso/{{concurso_id}}/iniciativa",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"concurso",
+								"{{concurso_id}}",
+								"iniciativa"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"apierror\": {\n        \"status\": \"NOT_FOUND\",\n        \"message\": \"The initiative with the given id was not found\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Borrar una iniciativa de un concurso",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/eventos/{{evento_id}}/iniciativas{{iniciativa_id_2}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"eventos",
+						"{{evento_id}}",
+						"iniciativas{{iniciativa_id_2}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Borrar una iniciativa de un concurso",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/evento/{{evento_id}}/iniciativa{{iniciativa_id_2}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"evento",
+								"{{evento_id}}",
+								"iniciativa{{iniciativa_id_2}}"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Borrar una iniciativa de un concurso que no existe",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/eventos/0/artworks/{{artwork_id_2}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"eventos",
+						"0",
+						"artworks",
+						"{{artwork_id_2}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Borrar una iniciativa de un concurso que no existe",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/evento/0/artworks/{{artwork_id_2}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"evento",
+								"0",
+								"artworks",
+								"{{artwork_id_2}}"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"apierror\": {\n        \"status\": \"NOT_FOUND\",\n        \"message\": \"The event with the given id was not found\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Borrar una iniciativa que no existe de un concurso",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/eventos/{{evento_id}}/iniciativas/0",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"eventos",
+						"{{evento_id}}",
+						"iniciativas",
+						"0"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Borrar una iniciativa que no existe de un concurso",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/evento/{{evento_id}}/iniciativa/0",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"evento",
+								"{{evento_id}}",
+								"iniciativa",
+								"0"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"apierror\": {\n        \"status\": \"NOT_FOUND\",\n        \"message\": \"The event with the given id was not found\"\n    }\n}"
+				}
+			]
+		}
+	]
+}

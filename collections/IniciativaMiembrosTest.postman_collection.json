@@ -1,0 +1,1123 @@
+{
+	"info": {
+		"_postman_id": "f6f371cf-6197-440e-8bd4-9267b200f463",
+		"name": "IniciativaMiembrosTest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37897942"
+	},
+	"item": [
+		{
+			"name": "Crear un miembro",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.globals.set(\"miembro_id_1\", data.id);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"packages": {},
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fechaInscripcion\": \"1927-03-03T00:00:00-05:00\",\r\n    \"nombre\": \"Gabo Márquez\",\r\n    \"foto\": \"https://commons.wikimedia.org/wiki/File:Gabriel_Garcia_Marquez.jpg\",\r\n    \"correoElectronico\": \"gabito@uniandes.edu.co\",\r\n    \"tipo\": \"Miembro\",\r\n    \"codigo\": 201284690,\r\n    \"estado\": \"EGRESADO\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/miembros",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"miembros"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Crear un miembro",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":1,\r\n    \"fechaInscripcion\": \"1927-03-03T00:00:00-05:00\",\r\n    \"nombre\": \"Gabo Márquez\",\r\n    \"foto\": \"https://commons.wikimedia.org/wiki/File:Gabriel_Garcia_Marquez.jpg\",\r\n    \"correoElectronico\": \"gabito@uniandes.edu.co\",\r\n    \"tipo\": \"Miembro\",\r\n    \"codigo\": 201284690,\r\n    \"estado\": \"EGRESADO\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/miembros",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"miembros"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Crear un miembro2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.globals.set(\"miembro_id_2\", data.id);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fechaInscripcion\": \"2024-03-03T00:00:00-05:00\",\r\n    \"nombre\": \"Ana Sánchez\",\r\n    \"foto\": \"https://Ana_Sanchez.jpg\",\r\n    \"correoElectronico\": \"am.sanchez@uniandes.edu.co\",\r\n    \"tipo\": \"Miembro\",\r\n    \"codigo\": 202014690,\r\n    \"estado\": \"ACTIVO\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/miembros",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"miembros"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Crear un miembro",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":1,\r\n    \"fechaInscripcion\": \"1927-03-03T00:00:00-05:00\",\r\n    \"nombre\": \"Gabo Márquez\",\r\n    \"foto\": \"https://commons.wikimedia.org/wiki/File:Gabriel_Garcia_Marquez.jpg\",\r\n    \"correoElectronico\": \"gabito@uniandes.edu.co\",\r\n    \"tipo\": \"Miembro\",\r\n    \"codigo\": 201284690,\r\n    \"estado\": \"EGRESADO\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/miembros",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"miembros"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Crear una nueva iniciativa",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.globals.set(\"iniciativa_id\", data.id);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"iniciativa1\",\r\n    \"logo\": \"https://www.image.com\",\r\n    \"descripcion\": \"me gusta\",\r\n    \"fechaCreacion\": \"2024-09-29\",\r\n    \"estado\": true,\r\n    \"administrador\": \"Pepito Perez\"\r\n    // \"miembros\": [ { \"id\": {{miembro_id}} } ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/iniciativas",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"iniciativas"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Crear una nueva iniciativas",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"nombre\": \"iniciativa1\",\r\n    \"logo\": \"https://www.image.com/1\",\r\n    \"descripcion\": \"me gusta\",\r\n    \"fechaCreacion\": \"25-02-2024\",\r\n    \"estado\": \"true\",\r\n    \"administrador\": \"Pepito Perez\",\r\n    \"miembros\": [{ \"id\": {{miembro_id}} }]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/iniciativas",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"iniciativas"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Post miembro in Iniciativa",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/iniciativas/{{iniciativa_id}}/miembros/{{miembro_id_2}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"iniciativas",
+						"{{iniciativa_id}}",
+						"miembros",
+						"{{miembro_id_2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post miembro in invalid iniciativa",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.apierror.message).to.eql(\"Iniciativa with id not valid\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/iniciativas/0/miembros/{{miembro_id_2}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"iniciativas",
+						"0",
+						"miembros",
+						"{{miembro_id_2}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Post evento in invalid iniciativa",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"apierror\": {\r\n        \"status\": \"NOT_FOUND\",\r\n        \"timestamp\": \"29-09-2024 07:47:40\",\r\n        \"message\": \"Iniciativa with id 0 not valid\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/iniciativas/0/eventos/{{evento_id1}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"iniciativas",
+								"0",
+								"eventos",
+								"{{evento_id1}}"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Post invalid miembro in iniciativa",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.apierror.message).to.eql(\"Miembro with id not valid\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/iniciativas/{{iniciativa_id}}/miembros/0",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"iniciativas",
+						"{{iniciativa_id}}",
+						"miembros",
+						"0"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Post evento in iniciativa",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"titulo\": \"evento1\",\r\n    \"imagenPublicitaria\": \"https://imagen.com\",\r\n    \"cupos\": 10,\r\n    \"descripcion\": \"evento descripcion\",\r\n    \"fecha\": \"2024-02-24\",\r\n    \"duracion\": 10,\r\n    \"lugar\": \"xd\",\r\n    \"organizador\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/iniciativas/{{iniciativa_id}}/eventos/{{evento_id1}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"iniciativas",
+								"{{iniciativa_id}}",
+								"eventos",
+								"{{evento_id1}}"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Get miembro from invalid iniciativa",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.apierror.message).to.eql(\"Iniciativa with id not valid\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/iniciativas/0/miembros/{{miembro_id_2}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"iniciativas",
+						"0",
+						"miembros",
+						"{{miembro_id_2}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get evento from invalid iniciativa",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/iniciativas/0/eventos/{{evento_id1}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"iniciativas",
+								"0",
+								"eventos",
+								"{{evento_id1}}"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Get invalid miembro from iniciativa Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.apierror.message).to.eql(\"Miembro with id not valid\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/iniciativas/{{iniciativa_id}}/miembros/0",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"iniciativas",
+						"{{iniciativa_id}}",
+						"miembros",
+						"0"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get invalid evento from iniciativa",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/iniciativas/{{iniciativa_id}}/eventos/0",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"iniciativas",
+								"{{iniciativa_id}}",
+								"eventos",
+								"0"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Get miembro from iniciativa",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/iniciativas/{{iniciativa_id}}/miembros/{{miembro_id_2}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"iniciativas",
+						"{{iniciativa_id}}",
+						"miembros",
+						"{{miembro_id_2}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get evento from iniciativa",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/iniciaitvas/{{iniciativa_id}}/eventos/{{evento_id1}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"iniciaitvas",
+								"{{iniciativa_id}}",
+								"eventos",
+								"{{evento_id1}}"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Get miembros from invalid iniciativa Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.apierror.message).to.eql(\"Iniciativa with id not valid\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/iniciativas/0/miembros",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"iniciativas",
+						"0",
+						"miembros"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get eventos from invalid iniciativa",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/iniciativas/0/eventos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"iniciativas",
+								"0",
+								"eventos"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Get miembros from iniciativa",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/iniciativas/{{iniciativa_id}}/miembros",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"iniciativas",
+						"{{iniciativa_id}}",
+						"miembros"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get eventos from iniciativa",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/iniciaitvas/{{iniciativa_id}}/eventos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"iniciaitvas",
+								"{{iniciativa_id}}",
+								"eventos"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Put miembros in iniciativa",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n[\r\n    {\r\n        \"id\": 2,\r\n        \"fechaInscripcion\": \"2024-03-03\",\r\n        \"nombre\": \"Ana maria Sánchez\",\r\n        \"foto\": \"https://Ana_Sanchez.jpg\",\r\n        \"correoElectronico\": \"am.sanchezm1@uniandes.edu.co\",\r\n        \"tipo\": \"Miembro\",\r\n        \"codigo\": 202014690,\r\n        \"estado\": \"ACTIVO\",\r\n        \"iniciativas\": [\r\n            {\r\n                \"nombre\": \"iniciativa1\",\r\n                \"logo\": \"https://www.image.com\",\r\n                \"descripcion\": \"me gusta\",\r\n                \"fechaCreacion\": \"2024-09-28\",\r\n                \"estado\": true,\r\n                \"administrador\": \"Pepito Perez\",\r\n                \"id\": 1\r\n            }\r\n        ]\r\n    }\r\n]\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/iniciativas/{{iniciativa_id}}/miembros",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"iniciativas",
+						"{{iniciativa_id}}",
+						"miembros"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Put eventos in iniciativa",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"id\": 1,\r\n        \"titulo\": \"evento1\",\r\n        \"imagenPublicitaria\": \"https://imagen.com\",\r\n        \"cupos\": 10,\r\n        \"descripcion\": \"evento descripcion\",\r\n        \"fecha\": \"2024-02-25\",\r\n        \"duracion\": 10,\r\n        \"lugar\": \"xd\",\r\n        \"organizador\": \"adrian\"\r\n    },\r\n    {\r\n        \"id\": 2,\r\n        \"titulo\": \"evento2\",\r\n        \"imagenPublicitaria\": \"https://imagen.com\",\r\n        \"cupos\": 10,\r\n        \"descripcion\": \"evento descripcion\",\r\n        \"fecha\": \"2024-02-25\",\r\n        \"duracion\": 10,\r\n        \"lugar\": \"xd\",\r\n        \"organizador\": \"adrian\"\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/iniciativas/{{iniciativa_id}}/eventos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"iniciativas",
+								"{{iniciativa_id}}",
+								"eventos"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Put miembros in invalid Iniciativa",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Get expected error message\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.apierror.message).to.eql(\"Iniciativa with id not valid\");",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"id\": 0,\n        \"nombre\": \"Iniciativa Fantasma\",\n        \"logo\": \"https://example.com/logo-phantom.png\",\n        \"descripcion\": \"Una iniciativa que no debería existir.\",\n        \"fechaCreacion\": \"2023-01-01\",\n        \"administrador\": \"Fantasma Doe\"\n    }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/iniciativas/0/miembros",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"iniciativas",
+						"0",
+						"miembros"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete miembro from invalid iniciativa",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.apierror.message).to.eql(\"Iniciativa with id not valid\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/iniciativas/0/miembros/{{miembro_id_2}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"iniciativas",
+						"0",
+						"miembros",
+						"{{miembro_id_2}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Delete evento from invalid iniciativa",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"apierror\": {\r\n        \"status\": \"NOT_FOUND\",\r\n        \"timestamp\": \"29-09-2024 06:57:22\",\r\n        \"message\": \"Iniciativa with id 0 not valid\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/iniciativas/0/eventos/{{evento_id1}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"iniciativas",
+								"0",
+								"eventos",
+								"{{evento_id1}}"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Delete invalid miembro from iniciativa",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.apierror.message).to.eql(\"Miembro with id not valid\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/iniciativas/{{iniciativa_id}}/miembros/0",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"iniciativas",
+						"{{iniciativa_id}}",
+						"miembros",
+						"0"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Delete invalid evento from iniciativa",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"apierror\": {\r\n        \"status\": \"NOT_FOUND\",\r\n        \"timestamp\": \"29-09-2024 06:56:58\",\r\n        \"message\": \"Evento with id 0 not valid\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/iniciativas/{{iniciativa_id}}/eventos/0",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"iniciativas",
+								"{{iniciativa_id}}",
+								"eventos",
+								"0"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Delete miembro from iniciativa Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"   pm.response.to.have.status(204);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/iniciativas/{{iniciativa_id}}/miembros/{{miembro_id_2}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"iniciativas",
+						"{{iniciativa_id}}",
+						"miembros",
+						"{{miembro_id_2}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
