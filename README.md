@@ -2,9 +2,9 @@
 
 ![Build](https://img.shields.io/badge/build-passing-brightgreen.svg)
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.1.0-brightgreen.svg)
-![Java](https://img.shields.io/badge/Java-17-orange.svg)
-![Made With](https://img.shields.io/badge/Made%20with-Spring%20Boot-blue.svg)
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.1.0-brightgreen.svg?logo=springboot&logoColor=white)
+![Java](https://img.shields.io/badge/Java-17-orange.svg?logo=openjdk&logoColor=white)
+![Made With](https://img.shields.io/badge/Made%20with-Spring%20Boot-blue.svg?logo=springboot&logoColor=white)
 
 This project is a backend application developed as part of the **ISIS2603** course at Universidad de los Andes. Its main objective is to serve as a foundation for managing student initiatives, enabling the administration and consultation of relevant information about projects, participants, and related activities.
 
