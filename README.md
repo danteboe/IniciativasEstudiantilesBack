@@ -54,7 +54,12 @@ This backend represents a reference solution for managing student initiatives an
 
 - 🛠️ **Jenkins**: Continuous integration for automating project builds and tests.  
 - 🧼 **SonarQube**: Static code analysis to ensure quality and detect potential vulnerabilities.
+---
 
+## 🔗 Related Repositories
+
+Looking for the frontend? Check out the Angular frontend here:
+👉 [Iniciativas Estudiantiles – Frontend](https://github.com/danteboe/IniciativasEstudiantilesFront)
 ---
 
 ## 👥 Collaborators
